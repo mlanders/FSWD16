@@ -34,13 +34,13 @@
                     if (student.name.toUpperCase() === input.toUpperCase()) {
                         $(".student").append(`
                         <div class="card">
-                        <div class="image">
-                            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-                        </div>
-                        <div class="content">
+                          <div class="image">
+                            <img src="${student.avatar}">
+                          </div>
+                          <div class="content">
                             <a class="header">${student.name}</a>
                             <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
-                        </div>
+                          </div>
                         </div>
                         `
                         )
