@@ -11,11 +11,11 @@
   <!-- Semantic-UI -->
   <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="assets/style.css">
   <title>Lambda | Class 16</title>
 </head>
 
-<body>
+<body onload="getStudents()">
   <div class="container">
     <!-- NAVBAR -->
     <nav id='push-down'>
@@ -33,64 +33,44 @@
     <main>
       <h1 class='ui header centered'>Welcome to the class FSW16!</h1>
       <div class="ui divider"></div>
-      <div class="ui six doubling cards centered raised link">
-        <!-- Person -->
-        <div class="card">
-          <div class="image">
-            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-          </div>
-          <div class="content">
-            <a class="header">Daniel Louise</a>
-          </div>
-        </div>
-        <!-- Person -->
-        <div class="card raised">
-          <div class="image">
-            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-          </div>
-          <div class="content">
-            <a class="header">Daniel Louise</a>
-          </div>
-        </div>
-        <!-- Person -->
-        <div class="card">
-          <div class="image">
-            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-          </div>
-          <div class="content">
-            <a class="header">Daniel Louise</a>
-          </div>
-        </div>
-        <!-- Person -->
-        <div class="card">
-          <div class="image">
-            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-          </div>
-          <div class="content">
-            <a class="header">Daniel Louise</a>
-          </div>
-        </div>
-        <!-- Person -->
-        <div class="card">
-          <div class="image">
-            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
-          </div>
-          <div class="content">
-            <a class="header">Daniel Louise</a>
-          </div>
-        </div>
+      <div class="ui six doubling cards centered raised link student">
 
       </div>
+
+
     </main>
-    
+
     <footer>
 
     </footer>
   </div> <!-- MAIN CONTAINER-->
-  
 
 
 
-  <script src='/js/script.js'></script>
+  <script>
+    getStudents = () => {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: 'students.json',
+        success: data => {
+          data.map(student => {
+            $(".student").append(`
+            <div class="card">
+              <div class="image">
+                <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+              </div>
+              <div class="content">
+                <a class="header">${student.name}</a>
+              </div>
+            </div>
+            `
+            )
+          })
+        },
+      })
+    }
+  </script>
+  <script src='script.js'></script>
 
 </html>
