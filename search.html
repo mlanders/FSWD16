@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <!-- JQUERY -->
+    <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60='
+        crossorigin='anonymous'></script>
+    <!-- Semantic-UI -->
+    <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Lambda | Class 16</title>
+</head>
+
+<body>
+    <div class="ui action input">
+        <input id="search" type="text" placeholder="Search...">
+        <button onclick="searchStudents()" class="ui button">Search</button>
+    </div>
+    <div class="ui six doubling cards centered raised link student"></div>
+</body>
+<script>
+    searchStudents = input => {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: 'students.json',
+            success: data => {
+                data.map(student => {
+                    var input = document.getElementById("search").value;
+
+                    if (student.name.toUpperCase() === input.toUpperCase()) {
+                        $(".student").append(`
+                        <div class="card">
+                        <div class="image">
+                            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+                        </div>
+                        <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                        </div>
+                        </div>
+                        `
+                        )
+                    }
+
+                })
+            },
+        })
+    }
+
+</script>
+
+</html>
