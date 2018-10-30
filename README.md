@@ -50,10 +50,9 @@ Below are some additional useful guides.
 
 
 ### Website Task List
-### Website Task List
 
 - [x] Add Semantic UI
 - [x] Add Students List JSON File
-- [x] Add styling
-- [x] Add Boostrap
-- [ ] Search implementation
+- [x] Add Styling
+- [x] Add Bootstrap
+- [x] Search implementation
