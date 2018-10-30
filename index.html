@@ -93,7 +93,7 @@
 
             var input = document.getElementById("search").value;
             if (input.length > 0) {
-              if (student.name.toUpperCase() === input.toUpperCase()) {
+              if (student.name.toUpperCase().trim() === input.toUpperCase().trim()) {
                 $(".student").html(`
                     <div class="card">
                       <div class="image">
