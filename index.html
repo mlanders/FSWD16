@@ -2,129 +2,145 @@
 
 <html lang='en'>
 
-<head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <!-- JQUERY -->
-  <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60='
-    crossorigin='anonymous'></script>
-  <!-- Semantic-UI -->
-  <link rel='stylesheet' text='text/css' href='css/semantic.min.css'>
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/style.css">
-  <title>Lambda | Class 16</title>
-</head>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <!-- JQUERY -->
+        <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60='
+                crossorigin='anonymous'></script>
+        <!-- Semantic-UI -->
+        <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-<body onload="getStudents()">
-  <div class="container">
-    <!-- NAVBAR -->
-    <nav id='push-down'>
-      <div class="ui inverted attached stackable menu">
-        <div class="ui container">
-          <a class="item">
-            <i class="home icon"></i> Home
-          </a>
-          <a class="item">
-            <i class="grid layout icon"></i> Browse Projects
-          </a>
-        </div>
-        <!-- SEARCH -->
-        <div class="right menu">
-          <div class="ui right aligned category search item">
-            <div class="ui transparent icon input">
-              <form onkeydown='searchStudents()'>
-                <input id="search" class="prompt" type="text" placeholder=" Search students...">
-              </form>
-            </div>
-            <div class="results"></div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <main>
-      <h1 class='ui header centered'>Welcome to the class FSW16!</h1>
-      <div class="ui divider"></div>
-      <div class="ui six doubling cards centered raised link student">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-      </div>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!--font Awesome-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <!--css-->
+        <link rel="stylesheet" href="css/style.css">
 
 
-    </main>
+        <title>Lambda | Class 16</title>
+    </head>
 
-    <footer>
-
-    </footer>
-  </div> <!-- MAIN CONTAINER-->
-
-
-
-  <script>
-    // Creating a function called getStudents() that is called as soon as the <body> loads
-    getStudents = () => {
-      // Making an AJAX request to the students.json file
-      $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: 'students.json',
-        success: data => {
-          // Upon success, we map over the JSON data (Array of objects)
-          data.map(student => {
-            // For each object, we create an HTML Card and append it to the div with class student
-            $(".student").append(`
-            <div class="card">
-              <div class="image">
-                <img src="${student.avatar}">
-              </div>
-              <div class="content">
-                <a class="header">${student.name}</a>
-                <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
-                <a class="header">${student.location}</a>
-              </div>
-            </div>
-            `
-            )
-          })
-        },
-      })
-    }
-    
-    // Creating a function called searchStudents() that takes in one argument, input
-    searchStudents = input => {
-      // Making an AJAX request to the students.json file
-      $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: 'students.json',
-        success: data => {
-          // Upon success, we map over the data 
-          data.map(student => {
-            // Declaring a variable that points to the div with the id "search"
-            var input = document.getElementById("search").value;
-            // checking if the search field is not empty
-            if (input.length > 0) {
-              // Checking and formatting the input to all uppercase to make it easier to match and getting rid of the leading and trailing white space then comparing
-              if (student.name.toUpperCase().trim() === input.toUpperCase().trim()) {
-                // if there is a match, we replace the existing HTML in the div with class student with the matching result
-                $(".student").html(`
-                    <div class="card">
-                      <div class="image">
-                        <img src="${student.avatar}">
-                      </div>
-                      <div class="content">
-                        <a class="header">${student.name}</a>
-                        <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
-                        <a class="header">${student.location}</a>
-                      </div>
+    <body onload="getStudents()">
+        <div class="container">
+            <!-- NAVBAR -->
+            <nav id='push-down'>
+                <div id="check" class="ui inverted attached stackable menu ">
+                    <div class="ui container ">
+                        <!-- fix this small issue, do a search but the home link was not responding. fixed-->
+                        <a class="item" href="index.html">
+                            <i class="home icon"></i> Home
+                        </a>
+                        <a class="item">
+                            <i class="grid layout icon"></i> Browse Projects
+                        </a>
                     </div>
-                        `
-                )
-              }
-            }
-          })
-        },
-      })
-    }
-  </script>
-  <script src='script.js'></script>
+                    <!-- SEARCH -->
+                    <div class="right menu ">
+                        <div class="ui right aligned category search item">
+                            <div class="ui transparent icon input">
+                                <form onkeydown='searchStudents()'>
+                                    <input id="search" class="prompt" type="text" placeholder=" Search students...">
+                                </form>
+                            </div>
+                            <div class="results"></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <main>
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <i class="fas fa-book-reader"></i><h1 class="display-4">Welcome To FSW16</h1><i class="fas fa-book-reader"></i>
+                        <p class="lead">Group of young dedicated people, Trying to become and achieve their dream.The sky is not the limit!</p>
+                    </div>
+                </div>
 
-</html>
+                <div class="ui divider"></div>
+                <div class="ui six doubling cards centered raised link student">
+
+                </div>
+
+
+
+            </main>
+
+            <footer>
+
+            </footer>
+        </div> <!-- MAIN CONTAINER-->
+
+
+
+        <script>
+            // Creating a function called getStudents() that is called as soon as the <body> loads
+            getStudents = () => {
+                // Making an AJAX request to the students.json file
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: 'students.json',
+                    success: data => {
+                        // Upon success, we map over the JSON data (Array of objects)
+                        data.map(student => {
+                            // For each object, we create an HTML Card and append it to the div with class student
+                            $(".student").append(`
+                            <div class="card">
+                            <div class="image">
+                            <img src="${student.avatar}">
+                            </div>
+                            <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                </div>
+                </div>
+    `
+                                                    )
+                            })
+                        },
+                    })
+                }
+
+                // Creating a function called searchStudents() that takes in one argument, input
+                searchStudents = input => {
+                    // Making an AJAX request to the students.json file
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: 'students.json',
+                        success: data => {
+                            // Upon success, we map over the data 
+                            data.map(student => {
+                                // Declaring a variable that points to the div with the id "search"
+                                var input = document.getElementById("search").value;
+                                // checking if the search field is not empty
+                                if (input.length > 0) {
+                                    // Checking and formatting the input to all uppercase to make it easier to match and getting rid of the leading and trailing white space then comparing
+                                    if (student.name.toUpperCase().trim() === input.toUpperCase().trim()) {
+                                        // if there is a match, we replace the existing HTML in the div with class student with the matching result
+                                        $(".student").html(`
+    <div class="card">
+    <div class="image">
+    <img src="${student.avatar}">
+                </div>
+    <div class="content">
+    <a class="header">${student.name}</a>
+    <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                </div>
+                </div>
+    `
+                                                          )
+                                    }
+                                }
+                            })
+                        },
+                    })
+                }
+            </script>
+            <script src='script.js'></script>
+
+            </html>
