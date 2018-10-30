@@ -18,4 +18,4 @@ If you would like to help create our class website please branch and do a pull r
 ### Website Task List
 
 - [x] Add Semantic UI
-- [ ] Add Students List JSON File
+- [x] Add Students List JSON File
