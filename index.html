@@ -33,6 +33,11 @@
     <main>
       <h1 class='ui header centered'>Welcome to the class FSW16!</h1>
       <div class="ui divider"></div>
+      <div class="ui action input">
+        <input id="search" type="text" placeholder="Search...">
+        <button onclick="searchStudents()" class="ui button">Search</button>
+      </div>
+      <div class="ui divider"></div>
       <div class="ui six doubling cards centered raised link student">
 
       </div>
@@ -67,6 +72,36 @@
             </div>
             `
             )
+          })
+        },
+      })
+    }
+    
+    searchStudents = input => {
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: 'students.json',
+        success: data => {
+          data.map(student => {
+
+            var input = document.getElementById("search").value;
+            if (input.length > 0) {
+              if (student.name.toUpperCase() === input.toUpperCase()) {
+                $(".student").html(`
+                        <div class="card">
+                        <div class="image">
+                            <img src="https://semantic-ui.com/images/avatar/large/elliot.jpg">
+                        </div>
+                        <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                        </div>
+                        </div>
+                        `
+                )
+              }
+            }
           })
         },
       })
