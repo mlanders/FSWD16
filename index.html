@@ -59,13 +59,17 @@
 
 
   <script>
+    // Creating a function called getStudents() that is called as soon as the <body> loads
     getStudents = () => {
+      // Making an AJAX request to the students.json file
       $.ajax({
         type: 'GET',
         dataType: 'json',
         url: 'students.json',
         success: data => {
+          // Upon success, we map over the JSON data (Array of objects)
           data.map(student => {
+            // For each object, we create an HTML Card and append it to the div with class student
             $(".student").append(`
             <div class="card">
               <div class="image">
@@ -83,17 +87,23 @@
       })
     }
     
+    // Creating a function called searchStudents() that takes in one argument, input
     searchStudents = input => {
+      // Making an AJAX request to the students.json file
       $.ajax({
         type: 'GET',
         dataType: 'json',
         url: 'students.json',
         success: data => {
+          // Upon success, we map over the data 
           data.map(student => {
-
+            // Declaring a variable that points to the div with the id "search"
             var input = document.getElementById("search").value;
+            // checking if the search field is not empty
             if (input.length > 0) {
+              // Checking and formatting the input to all uppercase to make it easier to match and getting rid of the leading and trailing white space then comparing
               if (student.name.toUpperCase().trim() === input.toUpperCase().trim()) {
+                // if there is a match, we replace the existing HTML in the div with class student with the matching result
                 $(".student").html(`
                     <div class="card">
                       <div class="image">
