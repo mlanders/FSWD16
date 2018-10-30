@@ -84,33 +84,52 @@
     }
     
     searchStudents = input => {
-      $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: 'students.json',
-        success: data => {
-          data.map(student => {
-
-            var input = document.getElementById("search").value;
-            if (input.length > 0) {
-              if (student.name.toUpperCase() === input.toUpperCase()) {
-                $(".student").html(`
-                    <div class="card">
-                      <div class="image">
-                        <img src="${student.avatar}">
-                      </div>
-                      <div class="content">
-                        <a class="header">${student.name}</a>
-                        <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
-                      </div>
-                    </div>
+        $(".student").empty()
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: 'students.json',
+            success: data => {
+                data.map(student => {
+                    // grab input and convert to uppercase to be consistent
+                    var input = document.getElementById("search").value;
+                    var inputUpper = input.toUpperCase()
+                    var charLength = inputUpper.length
+                    var studentName = student.name.toUpperCase()
+                    // search for substring in student name and display students that match substring
+                    if (studentName.substring(0, charLength) === inputUpper.substring(0, charLength)) {
+                        $(".student").append(`
+                        <div class="card">
+                          <div class="image">
+                            <img src="${student.avatar}">
+                          </div>
+                          <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                          </div>
+                        </div>
                         `
-                )
-              }
-            }
-          })
-        },
-      })
+                        )
+                    // if empty string in search box, show all students
+                    } else if (inputUpper === ''){
+                        $(".student").append(`
+                        <div class="card">
+                          <div class="image">
+                            <img src="${student.avatar}">
+                          </div>
+                          <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                          </div>
+                        </div>
+                        `
+                        )
+                    } 
+                    
+
+                })
+            },
+        })
     }
   </script>
   <script src='script.js'></script>
