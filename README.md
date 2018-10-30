@@ -36,7 +36,7 @@ Create the branch on your local folder and switch over to it by typing `git chec
 
 Now you can make any changes to the files locally. Type `git add .` to add all the changes you made in this folder, then type `git commit -m "your message here"` to make a commit and a commit message. Finally, type `git push origin name-of-new-branch` to push to your branch. 
 
-Navigate to the github repository and click New Pull Request. This will allow you to make a pull request to the original repository, and once it is accepted it will be merged into the main branch.
+Navigate to the github repository and click Compare & Pull Request. This will allow you to make a pull request to the original repository, and once it is accepted it will be merged into the main branch.
 
 ### Helpful Guides
 
