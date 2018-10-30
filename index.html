@@ -27,16 +27,22 @@
           <a class="item">
             <i class="grid layout icon"></i> Browse Projects
           </a>
+          <!-- SEARCH -->
+          <div class=“right menu”>
+            <div class=“ui right aligned category search item”>
+              <div class=“ui transparent icon input”>
+                <input id="search" type="text" placeholder="Search...">
+                <i class=“search link icon”></i>
+                <button onclick="searchStudents()" class="ui button">Search</button>
+              </div>
+              <div class=“results”></div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
     <main>
       <h1 class='ui header centered'>Welcome to the class FSW16!</h1>
-      <div class="ui divider"></div>
-      <div class="ui action input">
-        <input id="search" type="text" placeholder="Search...">
-        <button onclick="searchStudents()" class="ui button">Search</button>
-      </div>
       <div class="ui divider"></div>
       <div class="ui six doubling cards centered raised link student">
 
