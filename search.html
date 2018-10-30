@@ -32,7 +32,7 @@
                     var input = document.getElementById("search").value;
 
                     if (student.name.toUpperCase() === input.toUpperCase()) {
-                        $(".student").append(`
+                        $(".student").html(`
                         <div class="card">
                           <div class="image">
                             <img src="${student.avatar}">
