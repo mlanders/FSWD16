@@ -11,7 +11,7 @@
   <!-- Semantic-UI -->
   <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Lambda | Class 16</title>
 </head>
 
@@ -32,6 +32,10 @@
     </nav>
     <main>
       <h1 class='ui header centered'>Welcome to the class FSW16!</h1>
+      <div class="ui huge left icon input centered">
+        <input type="text" placeholder="Search students..." id="search" onkeyup="setFilter(); filterStudents()">
+        <i class="users icon"></i>
+      </div>
       <div class="ui divider"></div>
       <div class="ui six doubling cards centered raised link student">
 
@@ -48,12 +52,21 @@
 
 
   <script>
+
+    var filter = '';
+    function setFilter() {
+      filter = document.getElementById('search').value.toUpperCase();
+    }
+    
+    var studentList = [];
     getStudents = () => {
       $.ajax({
         type: 'GET',
         dataType: 'json',
         url: 'students.json',
         success: data => {
+
+
           data.map(student => {
             $(".student").append(`
             <div class="card">
@@ -67,11 +80,34 @@
             </div>
             `
             )
+
           })
+
+          createDataArray(data);
         },
       })
     }
+
+    
+    function createDataArray(data) {
+      studentList = data;
+    }
+
+ 
+
+    // filtering function used with the json object retrieved from the AJAX call
+    function filterStudents() {
+      var cards = $('.card');
+      for (var i = 0; i < studentList.length; i++) {
+        if (studentList[i].name.toUpperCase().indexOf(filter) > -1) {
+          cards[i].style.display = "";
+        } else {
+          cards[i].style.display = "none";
+        }
+      }
+    }
+
   </script>
-  <script src='script.js'></script>
+  <script src='js/script.js'></script>
 
 </html>
