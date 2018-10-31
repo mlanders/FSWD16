@@ -38,28 +38,28 @@ else {
 
 <body onload="getStudents()">
 
-    <!-- NAVBAR -->
+ <!-- NAVBAR -->
     <nav id='push-down'>
         <div id="check" class="ui inverted attached stackable menu ">
             <div class="ui container ">
                 <!-- fix this small issue, do a search but the home link was not responding. fixed-->
-                <a class="item" href="index.php">
+                <a class="item" href="index.html">
                     <i class="home icon"></i> Home
                 </a>
                 <a class="item">
                     <i class="grid layout icon"></i> Browse Projects
                 </a>
-                <a class="item" href="login/logout.php">
-                    <i class="angellist icon"></i> logout
-                </a>
             </div>
             <!-- SEARCH -->
             <div class="right menu">
                 <div class='item'>
-                    <div class="ui transparent icon input">
-                        <input class="prompt" type="text" placeholder="Search students..." id="search" onkeyup="setFilter(); filterStudents()">
-                        <i class="users icon"></i>
-                    </div>
+                    <form onkeydown='searchStudents()'>
+                        <div class="ui transparent icon input">
+
+                            <input id="search" class="prompt" type="text" placeholder=" Search students...">
+
+                        </div>
+                    </form>
                     <div class="results"></div>
                 </div>
             </div>
@@ -85,6 +85,7 @@ else {
 
 
 
+
     <script>
         var filter = '';
         function setFilter() {
@@ -98,17 +99,21 @@ else {
                 url: 'students.json',
                 success: data => {
                     data.map(student => {
-                        $(".student").append(`
-            <div class="card">
-              <div class="image">
-                <img src="${student.avatar}">
-              </div>
-              <div class="content">
-                <a class="header">${student.name}</a>
-                <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
-              </div>
-            </div>
-            `
+                         $(".student").append(`
+                            <div class="card">
+                                <div class="image">
+                                    <img src="${student.avatar}">
+                                </div>
+                                <div class="content">
+                                    <a class="ui medium header">${student.name}</a>
+                                    <a class='ui tiny header'>Location: ${student.location}</a>
+                                </div>
+                                <div class="item">  
+                                    <a class="" href="https://github.com/${student.githubHandle}"><i class="github icon"></i></a>
+                                    <a class="" href="https://${student.website}"><i class="globe icon"></i></a>
+                                </div>
+                            </div>
+                        `
                         )
                     })
                     createDataArray(data);
