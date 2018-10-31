@@ -2,7 +2,7 @@
 
 Lambda Full Stack Web Development 16 website.
 
-[View Website](fswd16.netlify.com)
+[View Website](https://fswd16.netlify.com/)
 
 If you would like to help create our class website please branch and do a pull request. 
 

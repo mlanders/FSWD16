@@ -1,3 +1,14 @@
+<?php
+session_start();
+if (isset($_SESSION['id'])){
+	$userId = $_SESSION['id'];
+	$username = $_SESSION['username'];
+}
+else {
+	header('Location: login/index.php');
+	die();
+}
+?>
 <!DOCTYPE html>
 
 <html lang='en'>
@@ -18,9 +29,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
         crossorigin="anonymous">
     <!--css-->
-    <link rel="stylesheet" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="css/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
-   
+
 
     <title>Lambda | Class 16</title>
 </head>
@@ -32,11 +43,14 @@
         <div id="check" class="ui inverted attached stackable menu ">
             <div class="ui container ">
                 <!-- fix this small issue, do a search but the home link was not responding. fixed-->
-                <a class="item" href="index.html">
+                <a class="item" href="index.php">
                     <i class="home icon"></i> Home
                 </a>
                 <a class="item">
                     <i class="grid layout icon"></i> Browse Projects
+                </a>
+                <a class="item" href="login/logout.php">
+                    <i class="angellist icon"></i> logout
                 </a>
             </div>
             <!-- SEARCH -->
@@ -76,7 +90,6 @@
         function setFilter() {
             filter = document.getElementById('search').value.toUpperCase();
         }
-
         var studentList = [];
         getStudents = () => {
             $.ajax({
@@ -102,11 +115,9 @@
                 },
             })
         }
-
         function createDataArray(data) {
             studentList = data;
         }
-
         // filtering function used with the json object retrieved from the AJAX call
         function filterStudents() {
             var cards = $('.card');
@@ -118,7 +129,21 @@
                 }
             }
         }
+        var mysql = require("mysql");
+        var con = mysql.createConnection({
+            host: "db4free.net",
+            user: "fswd16",
+            password: "lambdaschoolfswd16",
+            database: "fswd16"
+        });
+        con.connect(function (err) {
+            if (err) throw err;
+            con.query("SELECT * FROM students", function (err, result, fields) {
+                if (err) throw err;
+                console.log(result);
+            });
+        });
     </script>
-    <script src="/js/script.js"></script>
+    <script src="js/script.js"></script>
 
 </html>
