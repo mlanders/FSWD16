@@ -11,8 +11,6 @@
     <!-- Semantic-UI -->
     <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
     <!-- Custom CSS -->
-<<<<<<< HEAD
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <!--font Awesome-->
@@ -23,15 +21,12 @@
     <link rel="stylesheet" href="css/style.css">
    
 
-=======
+
     <link rel="stylesheet" href="css/style.css">
->>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
     <title>Lambda | Class 16</title>
 </head>
 
 <body onload="getStudents()">
-<<<<<<< HEAD
-
     <!-- NAVBAR -->
     <nav id='push-down'>
         <div id="check" class="ui inverted attached stackable menu ">
@@ -70,7 +65,7 @@
             </div>
             <div class="ui six doubling cards centered raised link student">
             </div>
-=======
+
     <div class="container">
         <!-- NAVBAR -->
         <nav id='push-down'>
@@ -101,7 +96,7 @@
             </div>
 
 
->>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
+
         </main>
 
         <footer>
@@ -112,11 +107,9 @@
 
 
     <script>
-<<<<<<< HEAD
         // Creating a function called getStudents() that is called as soon as the <body> loads
         getStudents = () => {
             // Making an AJAX request to the students.json file
-=======
 
         var filter = '';
         function setFilter() {
@@ -125,13 +118,11 @@
 
         var studentList = [];
         getStudents = () => {
->>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
             $.ajax({
                 type: 'GET',
                 dataType: 'json',
                 url: 'students.json',
                 success: data => {
-<<<<<<< HEAD
                     // Upon success, we map over the JSON data (Array of objects)
                     data.map(student => {
                         // For each object, we create an HTML Card and append it to the div with class student
@@ -190,7 +181,6 @@
     </script>
 
     <script src='/js/script.js'></script>
-=======
 
 
                     data.map(student => {
@@ -235,6 +225,5 @@
 
     </script>
     <script src='js/script.js'></script>
->>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
 
 </html>
