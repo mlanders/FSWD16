@@ -11,11 +11,66 @@
     <!-- Semantic-UI -->
     <link rel='stylesheet' text='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css'>
     <!-- Custom CSS -->
+<<<<<<< HEAD
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <!--font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <!--css-->
+    <link rel="stylesheet" href="/css/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
+   
+
+=======
+    <link rel="stylesheet" href="css/style.css">
+>>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
     <title>Lambda | Class 16</title>
 </head>
 
 <body onload="getStudents()">
+<<<<<<< HEAD
+
+    <!-- NAVBAR -->
+    <nav id='push-down'>
+        <div id="check" class="ui inverted attached stackable menu ">
+            <div class="ui container ">
+                <!-- fix this small issue, do a search but the home link was not responding. fixed-->
+                <a class="item" href="index.html">
+                    <i class="home icon"></i> Home
+                </a>
+                <a class="item">
+                    <i class="grid layout icon"></i> Browse Projects
+                </a>
+            </div>
+            <!-- SEARCH -->
+            <div class="right menu">
+                <div class='item'>
+                    <form onkeydown='searchStudents()'>
+                        <div class="ui transparent icon input">
+
+                            <input id="search" class="prompt" type="text" placeholder=" Search students...">
+
+                        </div>
+                    </form>
+                    <div class="results"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="main-container">
+        <main>
+            <div class="container">
+                <div class='console-container'>
+                    <span id='text'></span>
+                    <div class='console-underscore' id='console'>&#95;</div>
+                </div>
+            </div>
+            <div class="ui six doubling cards centered raised link student">
+            </div>
+=======
     <div class="container">
         <!-- NAVBAR -->
         <nav id='push-down'>
@@ -46,6 +101,7 @@
             </div>
 
 
+>>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
         </main>
 
         <footer>
@@ -56,6 +112,11 @@
 
 
     <script>
+<<<<<<< HEAD
+        // Creating a function called getStudents() that is called as soon as the <body> loads
+        getStudents = () => {
+            // Making an AJAX request to the students.json file
+=======
 
         var filter = '';
         function setFilter() {
@@ -64,11 +125,72 @@
 
         var studentList = [];
         getStudents = () => {
+>>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
             $.ajax({
                 type: 'GET',
                 dataType: 'json',
                 url: 'students.json',
                 success: data => {
+<<<<<<< HEAD
+                    // Upon success, we map over the JSON data (Array of objects)
+                    data.map(student => {
+                        // For each object, we create an HTML Card and append it to the div with class student
+                        $(".student").append(`
+                            <div class="card">
+                            <div class="image">
+                            <img src="${student.avatar}">
+                            </div>
+                            <div class="content">
+                            <a class="header">${student.name}</a>
+                            <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                </div>
+                </div>
+    `
+                        )
+                    })
+                },
+            })
+        }
+
+        // Creating a function called searchStudents() that takes in one argument, input
+        searchStudents = input => {
+            // Making an AJAX request to the students.json file
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: 'students.json',
+                success: data => {
+                    // Upon success, we map over the data 
+                    data.map(student => {
+                        // Declaring a variable that points to the div with the id "search"
+                        var input = document.getElementById("search").value;
+                        // checking if the search field is not empty
+                        if (input.length > 0) {
+                            // Checking and formatting the input to all uppercase to make it easier to match and getting rid of the leading and trailing white space then comparing
+                            if (student.name.toUpperCase().trim() === input.toUpperCase().trim()) {
+                                // if there is a match, we replace the existing HTML in the div with class student with the matching result
+                                $(".student").html(`
+    <div class="card">
+    <div class="image">
+    <img src="${student.avatar}">
+                </div>
+    <div class="content">
+    <a class="header">${student.name}</a>
+    <a class="header" href="https://github.com/${student.githubHandle}">Github: ${student.githubHandle}</a>
+                </div>
+                </div>
+    `
+                                )
+                            }
+                        }
+                    })
+                },
+            })
+        }
+    </script>
+
+    <script src='/js/script.js'></script>
+=======
 
 
                     data.map(student => {
@@ -113,5 +235,6 @@
 
     </script>
     <script src='js/script.js'></script>
+>>>>>>> c109590804a46fc612281e8124bb94e1fdb8fc3f
 
 </html>
