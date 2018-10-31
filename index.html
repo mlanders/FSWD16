@@ -20,7 +20,7 @@
     <!--css-->
     <link rel="stylesheet" href="/css/semantic.min.css">
     <link rel="stylesheet" href="css/style.css">
-   
+
 
     <title>Lambda | Class 16</title>
 </head>
@@ -105,20 +105,21 @@
             })
         }
 
-       var filter = '';
-       function setFilter() {
-           filter = document.getElementById('search').value.toUpperCase();
-       }
 
-       var studentList = [];
-       getStudents = () => {
-           $.ajax({
-               type: 'GET',
-               dataType: 'json',
-               url: 'students.json',
-               success: data => {
-                   data.map(student => {
-                       $(".student").append(`
+        var filter = '';
+        function setFilter() {
+            filter = document.getElementById('search').value.toUpperCase();
+        }
+
+        var studentList = [];
+        getStudents = () => {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: 'students.json',
+                success: data => {
+                    data.map(student => {
+                        $(".student").append(`
                             <div class="card">
                                 <div class="image">
                                     <img src="${student.avatar}">
@@ -132,28 +133,29 @@
                                     <a class="" href="https://${student.website}"><i class="globe icon"></i></a>
                                 </div>
                             </div>
-                       )
-                   })
-                   createDataArray(data);
-               },
-           })
-       }
+                        `
+                        )
+                    })
+                    createDataArray(data);
+                },
+            })
+        }
 
-       function createDataArray(data) {
-           studentList = data;
-       }
+        function createDataArray(data) {
+            studentList = data;
+        }
 
-       // filtering function used with the json object retrieved from the AJAX call
-       function filterStudents() {
-           var cards = $('.card');
-           for (var i = 0; i < studentList.length; i++) {
-               if (studentList[i].name.toUpperCase().indexOf(filter) > -1) {
-                   cards[i].style.display = "";
-               } else {
-                   cards[i].style.display = "none";
-               }
-           }
-       }
+        // filtering function used with the json object retrieved from the AJAX call
+        function filterStudents() {
+            var cards = $('.card');
+            for (var i = 0; i < studentList.length; i++) {
+                if (studentList[i].name.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
     </script>
     <script src="/js/script.js"></script>
 
